@@ -15,12 +15,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./web
-
     steps:
       - uses: actions/checkout@v4
 
@@ -29,9 +25,11 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
+        working-directory: ./web
         run: npm install
 
       - name: Build
+        working-directory: ./web
         run: npm run build
         env:
           VITE_API_URL: ${{ vars.VITE_API_URL || 'http://localhost:3001/api' }}
@@ -42,8 +40,15 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './web/dist'
+          path: './web/dist'   # ✅ correct — relative to repo root, not working-directory
 
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
