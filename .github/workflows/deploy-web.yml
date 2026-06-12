@@ -3,9 +3,6 @@ name: Deploy Web App to GitHub Pages
 on:
   push:
     branches: [main]
-    paths:
-      - 'web/**'
-      - '.github/workflows/deploy-web.yml'
   workflow_dispatch:
 
 permissions:
