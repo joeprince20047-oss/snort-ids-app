@@ -2,6 +2,9 @@
 
 A full-stack monitoring platform for **SNORT Intrusion Detection System** with a web dashboard (deployable on GitHub Pages) and a native Android companion app.
 
+## OFFICIAL INTERNID
+INTERNID : `CITS3854`
+
 ## Architecture
 
 ```
@@ -80,8 +83,7 @@ Open `android/` in Android Studio, sync Gradle, and run on device/emulator.
 2. Go to **Settings → Pages → Source → GitHub Actions**
 3. The included workflow deploys `web/` to Pages automatically on push
 
-Live at: `https://<your-username>.github.io/snort-ids-app/`
-
-## License
-
-MIT
+Live at: `https://joeprince20047-oss.github.io/snort-ids-app/`
+## Organization
+Codtech IT Solutions Private Limited
+Live at: `codtechitsolutions.com`
